@@ -1,6 +1,5 @@
 import re
 import sys
-import pyperclip
 import time
 from pynput.keyboard import Key, Controller
 
