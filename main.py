@@ -3,8 +3,23 @@ import sys
 import time
 from pynput.keyboard import Key, Controller
 import requests
-keyboard=Controller()
 
+keyboard=Controller()
+def getRt(url):
+    rt = url.split('=')[1]
+    return rt
+
+def getToken(rt):
+    r = requests.get('https://play.typeracer.com/?rt={}'.format(rt))
+    selected = re.findall(r'\{.+| | \}', r.text)
+    rightString = ""
+    for i in selected:
+        if 'jsessionid' in i:
+            rightString = i
+    rightId = re.findall(r'jsessionid=[0-9A-Z]+', rightString)[0].split('=')[1]
+    print(rightId)
+    return rightId
+            
 def typeText(input):
 	with open(input, 'r') as file:
 		data=file.read().replace('\n', '')	
@@ -20,4 +35,10 @@ def typeText(input):
 			keyboard.release(i)
 			print('printing ' + str(i))
 			time.sleep(.012)
-typeText(sys.argv[1])
+def __main__():    
+    url = sys.argv[1]
+    rt = getRt(url)
+    print(rt)
+    getToken(rt)
+    
+__main__()
