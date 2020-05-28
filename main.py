@@ -8,8 +8,8 @@ keyboard=Controller()
 
 def getWPM(wpm):
     wps = wpm / 60
-    cps = float(wps) / 4.7
-    return int(1.0 / cps)
+    cps = float(wps) * 5.9
+    return float(1.0 / cps)
 
 def getRt(url):
     rt = url.split('=')[1]
@@ -58,7 +58,7 @@ def sortText(text):
     for i in typertext:
 	    keyboard.press(i)
 	    keyboard.release(i)
-	    time.sleep(.015)
+	    time.sleep(pause)
 
 def __main__():    
     url = sys.argv[1]
