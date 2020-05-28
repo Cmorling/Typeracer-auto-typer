@@ -5,6 +5,12 @@ from pynput.keyboard import Key, Controller
 import requests
 
 keyboard=Controller()
+
+def getWPM(wpm):
+    wps = wpm / 60
+    cps = float(wps) / 4.7
+    return int(1.0 / cps)
+
 def getRt(url):
     rt = url.split('=')[1]
     return rt
@@ -39,6 +45,11 @@ def sortText(text):
     del wordSorted[0]
     phrase = max(wordSorted, key=len)
     typertext = (max(wordSorted, key=len)).encode('utf-8').decode("unicode-escape").encode('ascii').decode('utf-8') 
+    wpm = int(input('How fast would you like to go? [<wpm>]'))
+    if wpm == "":
+        print('[!] SUPPLY VALID WPM ')
+        exit()
+    pause = getWPM(wpm)
     start= input("Click yes when there are 3 seconds left[y/n]: ")
     if not start == 'y':
         exit()
@@ -51,7 +62,7 @@ def sortText(text):
 
 def __main__():    
     url = sys.argv[1]
-    print('[+] Parsing RaceTrack')
+    print('[?] Parsing RaceTrack')
     rt = getRt(url)
 
     print('[*] Racetrack found\n')
