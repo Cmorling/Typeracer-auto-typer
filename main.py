@@ -30,11 +30,12 @@ def getTypeText(jsessionid, rt):
             'http': 'http://127.0.0.1:8080',
             'https': 'http://127.0.0.1:8080'
             }
-    r = requests.post('https://play.typeracer.com/gameserv;jsessionid={}?rt={}'.format(jsessionid, rt), data='7|1|8|https://play.typeracer.com/com.typeracer.guest.Guest/|5CBFBDCD9A4D280D027FF3A5E637DC0C|_|joinRoom|y|2r|1w|{}|1|2|3|4|2|5|6|5|0|1|0|7|XRaIrZ0Q|8|'.format(rt), headers={
-        'Content-type': 'text/x-gwt-rpc', 
+    r = requests.post('https://play.typeracer.com/gameserv;jsessionid={}?rt={}'.format(jsessionid, rt), data='7|1|8|https://play.typeracer.com/com.typeracer.redesign.Redesign/|F3826187330E89EF6B6D98C5D0993876|_|joinRoom|y|2r|1w|{}|1|2|3|4|2|5|6|5|0|1|0|7|r9sY_zcX|8|'.format(rt), headers={
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:78.0)  Firefox/78.0',
+        'Content-Type': 'text/x-gwt-rpc', 
         'Referer': 'https://play.typeracer.com/?rt={}'.format(rt), 
-        'X-GWT-Permutation': 'BDBA47CD90E46D67D7DF854CAA005C64',
-        'X-GWT-Module-Base': 'https://play.typeracer.com/com.typeracer.guest.Guest/', 
+        'X-GWT-Permutation': '608319EE4F5291302E6D97608BA8F311',
+        'X-GWT-Module-Base': 'https://play.typeracer.com/com.typeracer.redesign.Redesign/', 
         'Connection': 'close',
         'Accept-Encoding': 'en-US',
         })
